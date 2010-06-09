@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenRepo urls: 'file:///tmp/maven2'
+    }
+
+    dependencies {
+        classpath 'pl.tlempart:gradle-gwt-plugin:0.1-SNAPSHOT'
+        classpath 'org.slf4j:slf4j-api:1.6.0'
+        classpath 'org.slf4j:slf4j-simple:1.6.0'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'gwt'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+	gwt
+}
+
+dependencies {
+	gwt 'com.google.gwt:gwt-user:2.0.3'
+	gwt 'com.google.gwt:gwt-dev:2.0.3'
+}
+
+moduleClass='com.example.Example'

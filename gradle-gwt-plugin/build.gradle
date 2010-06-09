@@ -1,0 +1,26 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+	
+group = 'pl.tlempart'
+version = '0.1-SNAPSHOT'
+	
+repositories {
+    mavenCentral()
+    mavenRepo urls: [ 'http://repository.codehaus.org/', 
+		'http://m2repo.spockframework.org/releases' ]
+}
+
+dependencies {
+    compile gradleApi()
+    testCompile 'org.spockframework:spock-core:0.4-groovy-1.7'
+    groovy 'org.slf4j:slf4j-api:1.6.0'
+    groovy 'org.slf4j:slf4j-simple:1.6.0'
+    groovy 'org.codehaus.groovy:groovy:1.7.2'
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file:///tmp/maven2")
+    }
+}
